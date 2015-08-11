@@ -1,9 +1,12 @@
+// note that curly braces hold objects, while square braces hold arrays
 var margin = {top: 40, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 var formatPercent = d3.format(".0%");
 
+// d3.scale.ordinal(): like levels
+// rangeRoundBands: computes range values so as to divide the chart area into evenly-spaced, evenly-sized bands, as in a bar chart
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
 
@@ -41,8 +44,14 @@ d3.tsv("data.tsv", type, function(error, data) {
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+      .call(xAxis)
+      .append("text")
+	.attr("x", width/2)
+        .attr("dy", "3em")
+        .style("text-anchor", "middle")
+	.text("English alphabets");
 
+  // y-axis and label
   svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
@@ -52,7 +61,7 @@ d3.tsv("data.tsv", type, function(error, data) {
       .attr("dy", ".71em")
       .style("text-anchor", "end")
       .text("Frequency");
-
+  
   svg.selectAll(".bar")
       .data(data)
     .enter().append("rect")
@@ -67,6 +76,6 @@ d3.tsv("data.tsv", type, function(error, data) {
 });
 
 function type(d) {
-  d.frequency = +d.frequency;
+  d.frequency = +d.frequency; // coerce to number
   return d;
 }
