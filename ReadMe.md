@@ -1,6 +1,8 @@
 ### d3examples
 
-[Karl W Broman](http://kbroman.org)
+Jitao David Zhang
+
+Modified from the examples by [Karl W Broman](http://kbroman.org).
 
 Examples of interactive graphics using [d3](http://d3js.org).
 
