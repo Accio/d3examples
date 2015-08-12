@@ -1,3 +1,4 @@
+WEBDIR=/var/www/html/D3/linked_heatmaps
 
 all: linked_heatmaps.js loglik.json
 
@@ -8,4 +9,4 @@ loglik.json: R/all_loglik.RData R/ll2json.R
 	cd R;R CMD BATCH ll2json.R
 
 web: all
-	scp index.html linked_heatmaps.coffee linked_heatmaps.css linked_heatmaps.js loglik.json broman-2.biostat.wisc.edu:public_html/D3/linked_heatmaps/
+	cp index.html linked_heatmaps.coffee linked_heatmaps.css linked_heatmaps.js loglik.json $(WEBDIR)/
