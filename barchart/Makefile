@@ -1,4 +1,5 @@
-WEBDIR=/var/www/html/D3/barchart/
+include ../d3.make
+
 
 install:barchart.css barchart.js data.tsv index.html
 	cp barchart.css barchart.js data.tsv index.html $(WEBDIR)
