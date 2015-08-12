@@ -1,4 +1,4 @@
-WEBDIR=/var/www/html/D3/linked_heatmaps
+include ../d3.make
 
 all: linked_heatmaps.js loglik.json
 
